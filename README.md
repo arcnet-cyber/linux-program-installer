@@ -6,6 +6,7 @@ Im still currently testing it across different platforms but it potentally shoul
 ## Currently functional on:
 - Arch
 - Debian
+- Fedora
 - 
 ## Implemented Package Managers and Distros
 - Pacman
