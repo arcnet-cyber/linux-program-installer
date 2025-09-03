@@ -5,7 +5,7 @@ Im still currently testing it across different platforms but it potentally shoul
 
 ## Currently functional on:
 - Arch
-- 
+- Debian
 - 
 ## Implemented Package Managers and Distros
 - Pacman
