@@ -18,7 +18,6 @@ Im still currently testing it across different platforms but it potentally shoul
   - Kali Linux
   - Parrot OS
   - Trisquel
-  - LXLE
   - Bodhi Linux
   - Peppermint OS
   - Deepin
