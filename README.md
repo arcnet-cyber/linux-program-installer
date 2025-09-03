@@ -3,21 +3,14 @@ a cross platform program installer designed for beginners to get used to linux
 
 Im still currently testing it across different platforms but it potentally should work on the package managers below
 
-## Currently functional on:
-- Arch
-- Manjaro
-- EndeavourOS
-- Debian
-- Fedora
-- 
 ## Implemented Package Managers and Distros
 - Pacman
-  - Arch Linux
-  - Manjaro
-  - EndeavourOS	 
-  - Garuda  
+  - Arch Linux ✔️
+  - Manjaro ✔️
+  - EndeavourOS ✔️
+  - Garuda ✔️  
 - Apt
-  - Debian
+  - Debian ✔️
   - Ubuntu
   - Linux Mint
   - Pop!_OS
@@ -41,7 +34,7 @@ Im still currently testing it across different platforms but it potentally shoul
   - openSUSE Tumbleweed
   - SUSE Linux Enterprise (SLE / SLES)
 - DNF
-  - Fedora
+  - Fedora ✔️
   - Red Hat Enterprise Linux (RHEL)
   - CentOS
   - AlmaLinux
