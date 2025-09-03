@@ -62,6 +62,7 @@ cd ~/linux-program-installer/XPlatformInstaller
 chmod +x setup.sh
 chmod +x uninstall.sh
 ./setup.sh
+source = ~/.bashrc
 ```
 The alias "installer" should then be added.  
 Executing "installer" in your Terminal should run the program
