@@ -1,14 +1,54 @@
 # linux-program-installer
 a cross platform program installer designed for beginners to get used to linux 
 
-Im still currently testing it across different platforms but it potentally 
+Im still currently testing it across different platforms but it potentally should work on the package managers below
 
 ## Currently functional on:
 - Arch
 - Debian
 - 
-
-
+## Implemented Package Managers and Distros
+- Pacman
+  - Arch Linux
+  - Manjaro
+  - EndeavourOS	
+  - ArcoLinux	
+  - Garuda  
+- Apt
+  - Debian
+  - Ubuntu
+  - Linux Mint
+  - Pop!_OS
+  - Elementary OS
+  - Zorin OS
+  - KDE Neon
+  - Kali Linux
+  - Parrot OS
+  - Trisquel
+  - LXLE
+  - Bodhi Linux
+  - Peppermint OS
+  - Deepin
+  - Ubuntu MATE
+  - Xubuntu
+  - Lubuntu
+  - Ubuntu Budgie
+- Zypper
+  - openSUSE
+  - openSUSE Leap
+  - openSUSE Tumbleweed
+  - SUSE Linux Enterprise (SLE / SLES)
+- DNF
+  - Fedora
+  - Red Hat Enterprise Linux (RHEL)
+  - CentOS
+  - AlmaLinux
+  - Rocky Linux
+  - Oracle Linux
+- XBPS
+ - Void Linux
+  
+If a listed Operating system doesnt work Post it in the issues and I'll try and fix it
 
 
 
