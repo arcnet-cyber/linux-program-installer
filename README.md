@@ -5,6 +5,7 @@ Im still currently testing it across different platforms but it potentally shoul
 
 ## Currently functional on:
 - Arch
+- Manjaro
 - Debian
 - Fedora
 - 
@@ -62,8 +63,8 @@ cd ~/linux-program-installer/XPlatformInstaller
 chmod +x setup.sh
 chmod +x uninstall.sh
 ./setup.sh
-source = ~/.bashrc
 ```
+Then reboot your terminal.  
 The alias "installer" should then be added.  
 Executing "installer" in your Terminal should run the program
 
