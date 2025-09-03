@@ -14,8 +14,6 @@ Im still currently testing it across different platforms but it potentally shoul
   - Ubuntu
   - Linux Mint
   - Pop!_OS
-  - Elementary OS
-  - Zorin OS
   - KDE Neon
   - Kali Linux
   - Parrot OS
