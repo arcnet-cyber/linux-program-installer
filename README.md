@@ -89,7 +89,7 @@ So this only runs using BASH and Python3 so easy enough to install and test out.
 The install.sh script will install the dependancies for you.
 
 
-## How it works?
+## How does it work?
 
 On most linux distributions there is a file at /etc/os-release that has your OS information on it.  
 All this program does to help you easily install your programs is read that file and has a list of different package managers and their commands thus streamlinig it
