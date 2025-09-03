@@ -11,16 +11,15 @@ Im still currently testing it across different platforms but it potentally shoul
   - Garuda ✔️  
 - Apt
   - Debian ✔️
-  - Ubuntu
+  - Ubuntu ✔️
   - Linux Mint
-  - Pop!_OS
-  - KDE Neon
-  - Kali Linux
-  - Parrot OS
-  - Trisquel
-  - Bodhi Linux
+  - Pop!_OS✔️
+  - KDE Neon✔️
+  - Kali Linux✔️
+  - Parrot OS✔️
+  - Bodhi Linux✔️
   - Peppermint OS
-  - Deepin
+  - Deepin-
   - Ubuntu MATE
   - Xubuntu
   - Lubuntu
