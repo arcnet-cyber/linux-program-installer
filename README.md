@@ -58,10 +58,10 @@ If a listed Operating system doesnt work Post it in the issues and I'll try and 
 
 ```
 git clone https://github.com/arcnet-cyber/linux-program-installer.git
-cd ~/linux-program-installer/XPlatormInstaller
+cd ~/linux-program-installer/XPlatformInstaller
 ./setup.sh
 ```
-The alias "installer" should then be added 
+The alias "installer" should then be added.  
 Executing "installer" in your Terminal should run the program
 
 ### Manual download
