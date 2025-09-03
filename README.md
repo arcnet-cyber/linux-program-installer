@@ -43,6 +43,8 @@ Im still currently testing it across different platforms but it potentally shoul
 - XBPS
   - Void Linux
   
+Ticks mean theyre tested by me personally.  
+
 If a listed Operating system doesnt work Post it in the issues and I'll try and fix it. Just because it's implemented doesnt mean its functional.
 
 
