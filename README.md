@@ -48,7 +48,7 @@ Im still currently testing it across different platforms but it potentally shoul
 - XBPS
  - Void Linux
   
-If a listed Operating system doesnt work Post it in the issues and I'll try and fix it
+If a listed Operating system doesnt work Post it in the issues and I'll try and fix it. Because just if it's implemented doesnt mean its functional.
 
 
 
