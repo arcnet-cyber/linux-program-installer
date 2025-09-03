@@ -5,7 +5,7 @@ Im still currently testing it across different platforms but it potentally shoul
 
 ## Currently functional on:
 - Arch
-- Debian
+- 
 - 
 ## Implemented Package Managers and Distros
 - Pacman
@@ -59,6 +59,8 @@ If a listed Operating system doesnt work Post it in the issues and I'll try and 
 ```
 git clone https://github.com/arcnet-cyber/linux-program-installer.git
 cd ~/linux-program-installer/XPlatformInstaller
+chmod +x setup.sh
+chmod +x uninstall.sh
 ./setup.sh
 ```
 The alias "installer" should then be added.  
