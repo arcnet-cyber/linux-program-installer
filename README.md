@@ -12,8 +12,7 @@ Im still currently testing it across different platforms but it potentally shoul
 - Pacman
   - Arch Linux
   - Manjaro
-  - EndeavourOS	
-  - ArcoLinux	
+  - EndeavourOS	 
   - Garuda  
 - Apt
   - Debian
