@@ -1,7 +1,5 @@
 # linux-program-installer
-a cross platform program installer designed for beginners to get used to linux 
-
-Im still currently testing it across different platforms but it potentally should work on the package managers below
+a cross platform program installer designed for beginners to get used to linux
 
 ## Implemented Package Managers and Distros
 - Pacman
