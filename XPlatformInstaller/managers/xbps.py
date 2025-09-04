@@ -43,4 +43,35 @@ class XbpsManager(PackageManager):
 
         return packages
 
-    def validate_package(self,_
+    def validate_package(self, name):
+        """
+        Validate that a package exists in the repository.
+        """
+        result = subprocess.run(
+            ["xbps-query", "-Rn", name],
+            capture_output=True,
+            text=True
+        )
+        return result.returncode == 0 and bool(result.stdout.strip())
+
+    def clean_package_list(self, package_list):
+        """
+        Remove duplicates and invalid packages.
+        """
+        seen = set()
+        valid = []
+        for pkg, desc in package_list:
+            if pkg not in seen:
+                seen.add(pkg)
+                if self.validate_package(pkg):
+                    valid.append((pkg, desc))
+                else:
+                    print(f"[!] Package not found or not installable: {pkg}")
+        return valid
+
+    def generate_install_command(self, packages):
+        """
+        Return a string for use with subprocess.run(shell=True)
+        """
+        names = [pkg for pkg, _ in packages]
+        return f"sudo xbps-install -Sy {' '.join(names)}"
