@@ -26,17 +26,18 @@ Im still currently testing it across different platforms but it potentally shoul
   - Ubuntu Budgie✔️
 - Zypper
   - openSUSE Leap❓
-  - openSUSE Tumbleweed
+  - openSUSE Tumbleweed✔️
 - DNF
   - Fedora ✔️
   - CentOS
   - AlmaLinux
-  - Rocky Linux
-  - Oracle Linux
+  - Rocky Linux❓
 - XBPS
   - Void Linux
   
 Ticks mean theyre tested by me personally.  
+Question marks means it might not work on the full version because i was using LIVE iso's in testing.
+
 
 If a listed Operating system doesnt work Post it in the issues and I'll try and fix it. Just because it's implemented doesnt mean its functional.
 
