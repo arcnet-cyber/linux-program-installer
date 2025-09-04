@@ -2,42 +2,7 @@
 a cross platform program installer designed for beginners to get used to linux
 
 ## Implemented Package Managers and Distros
-- Pacman
-  - Arch Linux✔️
-  - Manjaro✔️
-  - EndeavourOS✔️
-  - Garuda✔️  
-- Apt
-  - Debian✔️
-  - Ubuntu✔️
-  - Linux Mint
-  - Pop!_OS✔️
-  - KDE Neon✔️
-  - Kali Linux✔️
-  - Parrot OS✔️
-  - Bodhi Linux✔️
-  - Peppermint OS❓
-  - Deepin❓
-  - Ubuntu MATE✔️
-  - Xubuntu✔️
-  - Lubuntu✔️
-  - Ubuntu Budgie✔️
-- Zypper
-  - openSUSE Leap❓
-  - openSUSE Tumbleweed✔️
-- DNF
-  - Fedora✔️
-  - CentOS✔️
-  - AlmaLinux✔️
-  - Rocky Linux❓
-- XBPS
-  - Void Linux✔️
-  
-Ticks mean theyre tested by me personally.  
-Question marks means it might not work on the full version because i was using LIVE iso's in testing.
 
-
-If a listed Operating system doesnt work Post it in the issues and I'll try and fix it. Just because it's implemented doesnt mean its functional.
 
 
 
