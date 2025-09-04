@@ -28,8 +28,8 @@ Im still currently testing it across different platforms but it potentally shoul
   - openSUSE Leap❓
   - openSUSE Tumbleweed✔️
 - DNF
-  - Fedora ✔️
-  - CentOS
+  - Fedora✔️
+  - CentOS✔️
   - AlmaLinux
   - Rocky Linux❓
 - XBPS
@@ -91,5 +91,10 @@ Because I like distro hopping and sometimes I can't be fucked to learn the comma
 
 Simple as that
 
+
+## Current things i find being an issue right now
+
+- DNF based OSes have non-packages as a choice right now I have to filter right now
+- Void really goofy
 
 > Still definitly a work in progress but will convert to lower level languages when i can be bothered
