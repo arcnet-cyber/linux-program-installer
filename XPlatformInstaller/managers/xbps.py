@@ -3,10 +3,6 @@ from .base import PackageManager
 
 class XbpsManager(PackageManager):
     def search_package(self, name):
-        """
-        Search for packages matching 'name' using xbps-query.
-        Returns a list of tuples: (package_name, description)
-        """
         result = subprocess.run(
             ["xbps-query", "-Rs", name],
             capture_output=True,
@@ -32,9 +28,9 @@ class XbpsManager(PackageManager):
             # Remove repo prefix
             pkg_full = first.split("/", 1)[-1]  # e.g., "thc-hydra-9.4_1"
 
-            # Remove version suffix for display and validation
+            # Remove version for menu display
             if "-" in pkg_full:
-                pkg_name = "-".join(pkg_full.split("-")[:-1])  # "thc-hydra"
+                pkg_name = "-".join(pkg_full.split("-")[:-1])
             else:
                 pkg_name = pkg_full
 
@@ -45,28 +41,20 @@ class XbpsManager(PackageManager):
 
     def validate_package(self, name):
         """
-        Validate that a package exists in the repository.
+        Skip validation — trust the search results.
         """
-        result = subprocess.run(
-            ["xbps-query", "-Rn", name],
-            capture_output=True,
-            text=True
-        )
-        return result.returncode == 0 and bool(result.stdout.strip())
+        return True  # always valid for Void
 
     def clean_package_list(self, package_list):
         """
-        Remove duplicates and invalid packages.
+        Deduplicate only, do not validate.
         """
         seen = set()
         valid = []
         for pkg, desc in package_list:
             if pkg not in seen:
                 seen.add(pkg)
-                if self.validate_package(pkg):
-                    valid.append((pkg, desc))
-                else:
-                    print(f"[!] Package not found or not installable: {pkg}")
+                valid.append((pkg, desc))
         return valid
 
     def generate_install_command(self, packages):
