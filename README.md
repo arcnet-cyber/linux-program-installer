@@ -95,6 +95,5 @@ Simple as that
 ## Current things i find being an issue right now
 
 - DNF based OSes have non-packages as a choice right now I have to filter right now
-- Void really goofy
 
 > Still definitly a work in progress but will convert to lower level languages when i can be bothered
