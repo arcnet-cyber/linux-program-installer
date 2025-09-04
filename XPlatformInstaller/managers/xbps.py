@@ -3,6 +3,10 @@ from .base import PackageManager
 
 class XbpsManager(PackageManager):
     def search_package(self, name):
+        """
+        Search for packages matching 'name' using xbps-query.
+        Returns a list of tuples: (package_name, description)
+        """
         result = subprocess.run(
             ["xbps-query", "-Rs", name],
             capture_output=True,
@@ -22,40 +26,21 @@ class XbpsManager(PackageManager):
                 if rb != -1:
                     s = s[rb+1:].lstrip()
 
-            # First token is repo/pkg-version
+            # First token is repo/package-version
             first, rest = (s.split(None, 1) + [""])[:2]
 
-            # Use base package name (drop repo & version)
-            pkg_base = first.split("/", 1)[-1].split("-", 1)[0]
+            # Remove repo prefix
+            pkg_full = first.split("/", 1)[-1]  # e.g., "thc-hydra-9.4_1"
+
+            # Remove version suffix for display and validation
+            if "-" in pkg_full:
+                pkg_name = "-".join(pkg_full.split("-")[:-1])  # "thc-hydra"
+            else:
+                pkg_name = pkg_full
 
             desc = rest.strip()
-            packages.append((pkg_base, desc))
+            packages.append((pkg_name, desc))
 
         return packages
 
-    def validate_package(self, name):
-        result = subprocess.run(
-            ["xbps-query", "-Rn", name],
-            capture_output=True,
-            text=True
-        )
-        return result.returncode == 0 and bool(result.stdout.strip())
-
-    def clean_package_list(self, package_list):
-        seen = set()
-        valid = []
-        for pkg, desc in package_list:
-            if pkg not in seen:
-                seen.add(pkg)
-                if self.validate_package(pkg):
-                    valid.append((pkg, desc))
-                else:
-                    print(f"[!] Package not found or not installable: {pkg}")
-        return valid
-
-    def generate_install_command(self, packages):
-        """
-        Return a string like other managers for compatibility with shell=True
-        """
-        names = [pkg for pkg, _ in packages]
-        return f"sudo xbps-install -Sy {' '.join(names)}"
+    def validate_package(self,_
