@@ -30,7 +30,7 @@ Im still currently testing it across different platforms but it potentally shoul
 - DNF
   - Fedora✔️
   - CentOS✔️
-  - AlmaLinux
+  - AlmaLinux✔️
   - Rocky Linux❓
 - XBPS
   - Void Linux
