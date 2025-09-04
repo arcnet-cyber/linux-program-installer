@@ -33,7 +33,7 @@ Im still currently testing it across different platforms but it potentally shoul
   - AlmaLinux✔️
   - Rocky Linux❓
 - XBPS
-  - Void Linux
+  - Void Linux✔️
   
 Ticks mean theyre tested by me personally.  
 Question marks means it might not work on the full version because i was using LIVE iso's in testing.
