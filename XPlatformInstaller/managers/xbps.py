@@ -1,4 +1,5 @@
 import subprocess
+import re
 from .base import PackageManager
 
 class XbpsManager(PackageManager):
@@ -12,24 +13,47 @@ class XbpsManager(PackageManager):
 
         packages = []
         for line in lines:
-            # Format: repository/package-version_arch [installed] <desc>
-            # Example: void-repo/gparted-1.1.0_1  x86_64  [installed]  GNOME partition editor
-            parts = line.split(None, 3)
-            if len(parts) == 4:
-                pkg_ver = parts[0]  # e.g. void-repo/gparted-1.1.0_1
-                desc = parts[3]
+            s = line.strip()
+            if not s:
+                continue
 
-                # Drop repo prefix
-                if "/" in pkg_ver:
-                    pkg_ver = pkg_ver.split("/", 1)[1]  # gparted-1.1.0_1
+            # Remove leading status token like "[-]" or "[I]"
+            if s.startswith("["):
+                rb = s.find("]")
+                if rb != -1:
+                    s = s[rb+1:].lstrip()
 
-                # Remove version suffix (everything after the last dash followed by digits/underscore)
-                base_parts = pkg_ver.split("-")
-                while base_parts and (base_parts[-1].replace("_", "").isdigit() or base_parts[-1][0].isdigit()):
-                    base_parts.pop()
-                pkg_name = "-".join(base_parts)
+            # First token should now be "repo/pkgver" or just "pkgver"
+            # Grab that first token and the rest as description-ish tail
+            if not s:
+                continue
+            first, rest = (s.split(None, 1) + [""])[:2]
 
-                packages.append((pkg_name, desc))
+            # Drop repo prefix if present, e.g. "nonfree/hydra-9.4_1" -> "hydra-9.4_1"
+            pkgver = first.split("/", 1)[-1]
+
+            # Convert "name-1.2.3_1" -> "name"
+            # Find the last '-' where the next char is a digit (start of version)
+            cut = None
+            for i in range(len(pkgver) - 2, -1, -1):
+                if pkgver[i] == '-' and i + 1 < len(pkgver) and pkgver[i + 1].isdigit():
+                    cut = i
+                    break
+            pkg_name = pkgver[:cut] if cut is not None else pkgver
+
+            # Clean description: remove leading arch token and/or [installed]
+            desc = rest.strip()
+            if desc:
+                # Strip a leading arch token if present
+                first2, rest2 = (desc.split(None, 1) + [""])[:2]
+                if first2 in ("x86_64", "x86_64-musl", "i686", "i686-musl",
+                              "aarch64", "armv7hf", "noarch"):
+                    desc = rest2.strip()
+                # Remove [installed] marker wherever it appears in the front
+                desc = re.sub(r"^\[installed\]\s*", "", desc).strip()
+
+            packages.append((pkg_name, desc or ""))
+
         return packages
 
     def validate_package(self, name):
