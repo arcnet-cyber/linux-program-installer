@@ -24,16 +24,12 @@ class XbpsManager(PackageManager):
                     s = s[rb+1:].lstrip()
 
             # First token should now be "repo/pkgver" or just "pkgver"
-            # Grab that first token and the rest as description-ish tail
-            if not s:
-                continue
             first, rest = (s.split(None, 1) + [""])[:2]
 
-            # Drop repo prefix if present, e.g. "nonfree/hydra-9.4_1" -> "hydra-9.4_1"
+            # Drop repo prefix if present
             pkgver = first.split("/", 1)[-1]
 
             # Convert "name-1.2.3_1" -> "name"
-            # Find the last '-' where the next char is a digit (start of version)
             cut = None
             for i in range(len(pkgver) - 2, -1, -1):
                 if pkgver[i] == '-' and i + 1 < len(pkgver) and pkgver[i + 1].isdigit():
@@ -44,12 +40,10 @@ class XbpsManager(PackageManager):
             # Clean description: remove leading arch token and/or [installed]
             desc = rest.strip()
             if desc:
-                # Strip a leading arch token if present
                 first2, rest2 = (desc.split(None, 1) + [""])[:2]
                 if first2 in ("x86_64", "x86_64-musl", "i686", "i686-musl",
                               "aarch64", "armv7hf", "noarch"):
                     desc = rest2.strip()
-                # Remove [installed] marker wherever it appears in the front
                 desc = re.sub(r"^\[installed\]\s*", "", desc).strip()
 
             packages.append((pkg_name, desc or ""))
@@ -57,12 +51,23 @@ class XbpsManager(PackageManager):
         return packages
 
     def validate_package(self, name):
+        # Return True if any package matches the base name
         result = subprocess.run(
-            ["xbps-query", "-Rn", name],
+            ["xbps-query", "-Rs", name],
             capture_output=True,
             text=True
         )
-        return result.returncode == 0 and bool(result.stdout.strip())
+        lines = result.stdout.strip().splitlines()
+        for line in lines:
+            if not line.strip():
+                continue
+            # Extract the package name portion
+            first = line.strip().split(None, 1)[0].split("/", 1)[-1]
+            # Remove version suffix
+            pkg_base = re.sub(r"-\d.*$", "", first)
+            if pkg_base == name:
+                return True
+        return False
 
     def clean_package_list(self, package_list):
         seen = set()
@@ -77,5 +82,17 @@ class XbpsManager(PackageManager):
         return valid
 
     def generate_install_command(self, packages):
-        names = [pkg for pkg, _ in packages]
-        return f"sudo xbps-install -Sy {' '.join(names)}"
+        # Resolve the actual full package names for installation
+        resolved_names = []
+        for pkg, _ in packages:
+            result = subprocess.run(
+                ["xbps-query", "-Rs", pkg],
+                capture_output=True,
+                text=True
+            )
+            lines = result.stdout.strip().splitlines()
+            if lines:
+                # Take first match and drop repo prefix
+                first_pkg = lines[0].split(None, 1)[0].split("/", 1)[-1]
+                resolved_names.append(first_pkg)
+        return f"sudo xbps-install -Sy {' '.join(resolved_names)}"
