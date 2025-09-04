@@ -5,33 +5,30 @@ Im still currently testing it across different platforms but it potentally shoul
 
 ## Implemented Package Managers and Distros
 - Pacman
-  - Arch Linux ✔️
-  - Manjaro ✔️
-  - EndeavourOS ✔️
-  - Garuda ✔️  
+  - Arch Linux✔️
+  - Manjaro✔️
+  - EndeavourOS✔️
+  - Garuda✔️  
 - Apt
-  - Debian ✔️
-  - Ubuntu ✔️
+  - Debian✔️
+  - Ubuntu✔️
   - Linux Mint
   - Pop!_OS✔️
   - KDE Neon✔️
   - Kali Linux✔️
   - Parrot OS✔️
   - Bodhi Linux✔️
-  - Peppermint OS
-  - Deepin-
-  - Ubuntu MATE
-  - Xubuntu
-  - Lubuntu
-  - Ubuntu Budgie
+  - Peppermint OS❓
+  - Deepin❓
+  - Ubuntu MATE✔️
+  - Xubuntu✔️
+  - Lubuntu✔️
+  - Ubuntu Budgie✔️
 - Zypper
-  - openSUSE
-  - openSUSE Leap
+  - openSUSE Leap❓
   - openSUSE Tumbleweed
-  - SUSE Linux Enterprise (SLE / SLES)
 - DNF
   - Fedora ✔️
-  - Red Hat Enterprise Linux (RHEL)
   - CentOS
   - AlmaLinux
   - Rocky Linux
