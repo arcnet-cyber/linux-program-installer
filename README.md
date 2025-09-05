@@ -94,7 +94,7 @@ Simple as that
 
 ## Current things i find being an issue right now
 - [x] Fix void compatibilty
-- [ ] Fix DNF Visuals
-- [ ] Add the ability to uninstall files using the package mananger
+- [x] Fix DNF Visuals
+- [x] Add the ability to uninstall files using the package mananger
 
 > Still definitly a work in progress but will convert to lower level languages when i can be bothered
