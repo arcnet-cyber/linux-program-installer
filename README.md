@@ -1,6 +1,8 @@
 # linux-program-installer
-a cross platform program installer designed for beginners to get used to linux
-
+A cross platform program installer designed for beginners to get used to linux.  
+It works with BASH, ZSH and FISH shells.  
+  
+  
 ## Implemented Package Managers and Distros
 
 - Pacman
@@ -74,7 +76,7 @@ Run uninstall.sh to remove the alias and project files
 
 ## Dependancies
 
-So this only runs using BASH and Python3 so easy enough to install and test out.
+So this only runs using shell commandsand Python3 so easy enough to install and test out.
 The install.sh script will install the dependancies for you.
 
 
