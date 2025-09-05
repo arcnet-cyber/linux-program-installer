@@ -1,4 +1,4 @@
-# linux-program-installer
+# Cross Platform Installer
 A cross platform program installer designed for beginners to get used to linux.  
 It works with BASH, ZSH and FISH shells.  
   
