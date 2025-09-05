@@ -50,3 +50,27 @@ class AptManager(PackageManager):
     def generate_install_command(self, packages):
         names = [pkg for pkg, _ in packages]
         return f"sudo apt install {' '.join(names)}"
+
+    # -------------------------
+    # UNINSTALL SUPPORT METHODS
+    # -------------------------
+
+    def generate_uninstall_command(self, packages):
+        names = [pkg for pkg, _ in packages]
+        return f"sudo apt remove -y {' '.join(names)}"
+
+    def list_installed_packages(self):
+        result = subprocess.run(
+            ["apt", "list", "--installed"],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        packages = []
+        for line in result.stdout.splitlines():
+            if line and not line.startswith("Listing..."):
+                if "/" in line and "installed" in line:
+                    pkg = line.split("/")[0]
+                    # apt list does not give description; leave empty
+                    packages.append((pkg, ""))
+        return packages

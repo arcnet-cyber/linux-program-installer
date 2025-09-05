@@ -63,3 +63,39 @@ class XbpsManager(PackageManager):
         """
         names = [pkg for pkg, _ in packages]
         return f"sudo xbps-install -Sy {' '.join(names)}"
+
+    # -------------------------
+    # UNINSTALL SUPPORT METHODS
+    # -------------------------
+
+    def generate_uninstall_command(self, packages):
+        names = [pkg for pkg, _ in packages]
+        return f"sudo xbps-remove -Ry {' '.join(names)}"
+
+    def list_installed_packages(self):
+        result = subprocess.run(
+            ["xbps-query", "-l"],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        packages = []
+        for line in result.stdout.splitlines():
+            s = line.strip()
+            if not s:
+                continue
+
+            # Format: status pkg-version
+            parts = s.split()
+            if len(parts) < 2:
+                continue
+            pkg_full = parts[1]
+
+            # Remove version for menu display
+            if "-" in pkg_full:
+                pkg_name = "-".join(pkg_full.split("-")[:-1])
+            else:
+                pkg_name = pkg_full
+
+            packages.append((pkg_name, ""))  # no description
+        return packages

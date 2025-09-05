@@ -57,3 +57,26 @@ class PacmanManager(PackageManager):
     def generate_install_command(self, packages):
         names = [pkg for pkg, _ in packages]
         return f"sudo pacman -S {' '.join(names)}"
+
+    # -------------------------
+    # UNINSTALL SUPPORT METHODS
+    # -------------------------
+
+    def generate_uninstall_command(self, packages):
+        names = [pkg for pkg, _ in packages]
+        return f"sudo pacman -R --noconfirm {' '.join(names)}"
+
+    def list_installed_packages(self):
+        result = subprocess.run(
+            ["pacman", "-Q"],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        packages = []
+        for line in result.stdout.splitlines():
+            parts = line.split()
+            pkg = parts[0]
+            # pacman -Q does not provide description; leave empty
+            packages.append((pkg, ""))
+        return packages

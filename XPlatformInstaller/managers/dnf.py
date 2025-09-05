@@ -25,8 +25,8 @@ class DnfManager(PackageManager):
         for line in lines:
             line = line.strip()
 
-            # Skip metadata lines or empty lines
-            if not line or line.startswith("Updating") or line.startswith("Repositories loaded") or ":" not in line:
+            # Skip metadata lines, empty lines, and DNF "Matched fields"
+            if not line or line.startswith("Updating") or line.startswith("Repositories loaded") or line.startswith("Matched fields") or ":" not in line:
                 continue
 
             # Format: package.arch: Description
@@ -73,3 +73,39 @@ class DnfManager(PackageManager):
     def generate_install_command(self, packages):
         names = [pkg for pkg, _ in packages]
         return f"sudo dnf install -y {' '.join(names)}"
+
+    # -------------------------
+    # UNINSTALL SUPPORT METHODS
+    # -------------------------
+
+    def generate_uninstall_command(self, packages):
+        names = [pkg for pkg, _ in packages]
+        return f"sudo dnf remove -y {' '.join(names)}"
+
+    def list_installed_packages(self):
+        env = os.environ.copy()
+        env["LANG"] = "C"
+
+        # Correct command to list installed packages
+        result = subprocess.run(
+            ["dnf", "list", "--installed"],
+            capture_output=True,
+            text=True,
+            env=env
+        )
+
+        packages = []
+        lines = result.stdout.strip().splitlines()
+
+        for line in lines:
+            line = line.strip()
+            # Skip header/metadata/error lines
+            if not line or line.startswith("Installed Packages") or line.startswith("Last metadata") or line.startswith("Error:"):
+                continue
+
+            parts = line.split()
+            if len(parts) >= 1:
+                pkg_name = parts[0].split(".")[0]  # drop architecture
+                packages.append((pkg_name, ""))
+
+        return packages
