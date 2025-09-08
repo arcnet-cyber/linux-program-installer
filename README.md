@@ -1,7 +1,10 @@
 # Cross Platform Installer
 A cross platform program installer designed for beginners to get used to linux.  
 It works with BASH, ZSH and FISH shells.  
-  
+This is the TUI version a gui version is available at:
+```
+https://github.com/arcnet-cyber/linux-program-installer-gui
+```
   
 ## Implemented Package Managers and Distros
 
