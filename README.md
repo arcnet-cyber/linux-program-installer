@@ -96,8 +96,11 @@ Simple as that
 
 
 ## Current things i find being an issue right now
-- [x] Fix void compatibilty
-- [x] Fix DNF Visuals
-- [x] Add the ability to uninstall files using the cross package mananger
+- [ ] Add update system 
+- [ ] Add multi uninstall/install
+- [ ] 
 
 > Still definitly a work in progress but will convert to lower level languages when i can be bothered
+
+
+As anything I do, This program is open source and free for anyone to edit and use how they please.
